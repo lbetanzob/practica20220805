@@ -11,11 +11,13 @@ public class FacturaController {
     @Autowired
     private IFacturaRepo ifrepo;
 
+    // http://localhost:8080/facturacion/listafact
     @GetMapping("/listafact")
     public Iterable<Factura> listafact() {
         return ifrepo.findAll();
     }
 
+    // http://localhost:8080/facturacion/Listauna/3
     @GetMapping("/Listauna/{numfactura}")
     public Factura una(@PathVariable("numfactura") int numfactura)  throws Exception{
         if(ifrepo.findById(numfactura).isPresent()==false) {
